@@ -4,19 +4,25 @@ const music = document.getElementById("bgMusic");
 
 let scale = 1;
 
-// Start music on first interaction (required by browsers)
+// Resume music if already playing
+if (localStorage.getItem("musicPlaying") === "true") {
+    music.play();
+}
+
+// Start music on first interaction
 document.body.addEventListener("click", () => {
     music.play();
+    localStorage.setItem("musicPlaying", "true");
 }, { once: true });
 
 function vibratePhone() {
     if (navigator.vibrate) {
-        navigator.vibrate(120); // 120ms cute vibration
+        navigator.vibrate([200, 100, 200]); // STRONG pattern 📳
     }
 }
 
 function moveAndShrink() {
-    vibratePhone(); // 📳 vibrate on NO
+    vibratePhone();
 
     const x = Math.random() * 250;
     const y = Math.random() * 150;
@@ -31,10 +37,7 @@ function moveAndShrink() {
     noBtn.style.transform = `translate(${x}px, ${y}px) scale(${scale})`;
 }
 
-// Desktop
 noBtn.addEventListener("mouseover", moveAndShrink);
-
-// Mobile + universal
 noBtn.addEventListener("click", moveAndShrink);
 noBtn.addEventListener("touchstart", moveAndShrink);
 
