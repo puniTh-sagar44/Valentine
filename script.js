@@ -7,12 +7,11 @@ let scale = 1;
 // Start music
 document.body.addEventListener("click", () => {
   music.play();
-  localStorage.setItem("musicPlaying", "true");
 }, { once: true });
 
 function vibrate() {
   if (navigator.vibrate) {
-    navigator.vibrate([300, 150, 300]); // noticeable 📳
+    navigator.vibrate([300, 150, 300]);
   }
 }
 
@@ -35,5 +34,21 @@ noBtn.addEventListener("touchstart", escapeNo);
 noBtn.addEventListener("mouseover", escapeNo);
 
 yesBtn.addEventListener("click", () => {
-  window.location.href = "love.html";
+  explodeHearts();
+  setTimeout(() => {
+    window.location.href = "love.html";
+  }, 900);
 });
+
+function explodeHearts() {
+  for (let i = 0; i < 25; i++) {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerText = "❤️";
+    heart.style.left = "50vw";
+    heart.style.fontSize = Math.random() * 20 + 16 + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 3000);
+  }
+}
