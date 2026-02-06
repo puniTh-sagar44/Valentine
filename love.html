@@ -1,28 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>I Love You ❤️</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>I Love You ❤️</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
 <audio id="bgMusic" loop>
-    <source src="music.mp3" type="audio/mpeg">
+  <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<div class="container">
-    <h1>I Love You My Babe ❤️</h1>
-    <img src="babe.jpg" alt="My Love" class="love-img">
-    <p>You are my today, my tomorrow & my forever 🥰</p>
-</div>
+<main class="screen">
+  <section class="card reveal">
+    <h1>I Love You, My Babe ❤️</h1>
+
+    <img src="babe.jpg" alt="My Love" class="love-img"/>
+
+    <p class="subtitle">
+      You are my <strong>today</strong>, my <strong>tomorrow</strong>, and my <strong>forever</strong> 🥹💖
+    </p>
+  </section>
+</main>
 
 <script>
-    const music = document.getElementById("bgMusic");
-
-    if (localStorage.getItem("musicPlaying") === "true") {
-        music.play();
-    }
+  const music = document.getElementById("bgMusic");
+  if (localStorage.getItem("musicPlaying") === "true") {
+    music.play();
+  }
 </script>
 
 <script src="hearts.js"></script>
