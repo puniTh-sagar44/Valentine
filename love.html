@@ -1,36 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>I Love You ❤️</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 
 <audio id="bgMusic" loop>
-  <source src="music.mp3" type="audio/mpeg">
+  <source src="music.mp3" type="audio/mpeg"/>
 </audio>
 
 <main class="screen">
-  <section class="card reveal">
+  <section class="card">
     <h1>I Love You, My Babe ❤️</h1>
 
-    <img src="babe.jpg" alt="My Love" class="love-img"/>
+    <img src="babe.jpg" class="love-img"/>
 
-    <p class="subtitle">
-      You are my <strong>today</strong>, my <strong>tomorrow</strong>, and my <strong>forever</strong> 🥹💖
-    </p>
+    <p id="typeText" class="subtitle"></p>
   </section>
 </main>
 
+<script src="hearts.js"></script>
 <script>
   const music = document.getElementById("bgMusic");
-  if (localStorage.getItem("musicPlaying") === "true") {
-    music.play();
-  }
-</script>
+  music.play();
 
-<script src="hearts.js"></script>
+  const text = "You are my today, my tomorrow, and my forever 💖";
+  let i = 0;
+  const speed = 60;
+
+  function typeWriter() {
+    if (i < text.length) {
+      document.getElementById("typeText").innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typeWriter, speed);
+    }
+  }
+
+  setTimeout(typeWriter, 1200);
+</script>
 </body>
 </html>
