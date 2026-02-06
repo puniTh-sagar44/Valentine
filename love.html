@@ -7,11 +7,24 @@
 </head>
 <body>
 
+<audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
 <div class="container">
     <h1>I Love You My Babe ❤️</h1>
     <img src="babe.jpg" alt="My Love" class="love-img">
-    <p>You just made me the happiest person 🥰</p>
+    <p>You are my today, my tomorrow & my forever 🥰</p>
 </div>
 
+<script>
+    const music = document.getElementById("bgMusic");
+
+    if (localStorage.getItem("musicPlaying") === "true") {
+        music.play();
+    }
+</script>
+
+<script src="hearts.js"></script>
 </body>
 </html>
