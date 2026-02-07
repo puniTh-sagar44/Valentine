@@ -1,54 +1,38 @@
-const noBtn = document.getElementById("noBtn");
-const yesBtn = document.getElementById("yesBtn");
+const no = document.getElementById("no");
+const yes = document.getElementById("yes");
 const music = document.getElementById("bgMusic");
 
 let scale = 1;
 
-// Start music
-document.body.addEventListener("click", () => {
+document.body.addEventListener("touchstart", () => {
   music.play();
 }, { once: true });
 
-function vibrate() {
-  if (navigator.vibrate) {
-    navigator.vibrate([300, 150, 300]);
-  }
-}
-
-function escapeNo() {
-  vibrate();
+function escape() {
+  if (navigator.vibrate) navigator.vibrate([200,100,200]);
 
   scale -= 0.12;
-  if (scale <= 0.25) {
-    noBtn.style.display = "none";
+  if (scale < 0.25) {
+    no.style.display = "none";
     return;
   }
 
   const x = Math.random() * 180;
-  const y = Math.random() * 120;
-  noBtn.style.transform = `translate(${x}px, ${y}px) scale(${scale})`;
+  const y = Math.random() * 100;
+  no.style.transform = `translate(${x}px, ${y}px) scale(${scale})`;
 }
 
-noBtn.addEventListener("click", escapeNo);
-noBtn.addEventListener("touchstart", escapeNo);
-noBtn.addEventListener("mouseover", escapeNo);
+no.addEventListener("touchstart", escape);
+no.addEventListener("click", escape);
 
-yesBtn.addEventListener("click", () => {
-  explodeHearts();
-  setTimeout(() => {
-    window.location.href = "love.html";
-  }, 900);
-});
-
-function explodeHearts() {
-  for (let i = 0; i < 25; i++) {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerText = "❤️";
-    heart.style.left = "50vw";
-    heart.style.fontSize = Math.random() * 20 + 16 + "px";
-    document.body.appendChild(heart);
-
-    setTimeout(() => heart.remove(), 3000);
+yes.addEventListener("click", () => {
+  for (let i = 0; i < 30; i++) {
+    const h = document.createElement("div");
+    h.className = "heart";
+    h.innerText = "❤️";
+    h.style.left = "50vw";
+    document.body.appendChild(h);
+    setTimeout(() => h.remove(), 3000);
   }
-}
+  setTimeout(() => location.href = "love.html", 900);
+});
