@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
-
+/* RESET */
 * {
   margin: 0;
   padding: 0;
@@ -7,6 +6,7 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+/* BASE */
 html, body {
   width: 100%;
   height: 100%;
@@ -19,7 +19,7 @@ html, body {
 /* FULL SCREEN APP */
 .app {
   width: 100vw;
-  height: 100dvh; /* mobile-safe viewport */
+  height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -33,80 +33,70 @@ html, body {
   text-align: center;
 }
 
-/* HEADLINE */
-h1 {
-  font-size: 1.8rem;
+/* TITLE */
+.title {
+  font-size: 1.9rem;
   line-height: 1.3;
   color: #ff5da2;
+  animation: fadeUp 1.2s ease forwards;
+}
+
+/* GIRL NAME */
+.girl-name {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 2.2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #ff2f92, #ff77b7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 18px rgba(255, 47, 146, 0.4);
 }
 
 /* BUTTON ZONE */
 .actions {
-  margin-top: 48px;
   position: relative;
-  height: 120px;
+  height: 130px;
+  margin-top: 48px;
 }
 
+/* BUTTON BASE */
 button {
-  padding: 16px 40px;
+  padding: 16px 42px;
   border-radius: 999px;
   border: none;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
+/* YES BUTTON */
 .yes {
   background: linear-gradient(135deg, #ff2f92, #ff77b7);
   color: #fff;
-  box-shadow: 0 12px 30px rgba(255, 47, 146, 0.6);
+  box-shadow: 0 15px 35px rgba(255, 47, 146, 0.6);
 }
 
+.yes:active {
+  transform: scale(0.95);
+}
+
+/* NO BUTTON */
 .no {
   position: absolute;
   background: rgba(255,255,255,0.15);
   color: #ddd;
 }
 
-/* LOVE IMAGE */
-.love-img {
-  width: 70vw;
-  max-width: 220px;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  border-radius: 22px;
-  margin: 24px auto;
-  opacity: 0;
-  transform: scale(0.85);
-  animation: imageIn 1.6s ease forwards;
-}
-
-@keyframes imageIn {
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
   to {
     opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* TYPE TEXT */
-.type {
-  min-height: 52px;
-  font-size: 1rem;
-  line-height: 1.6;
-  opacity: 0.9;
-}
-
-/* HEARTS */
-.heart {
-  position: fixed;
-  bottom: -10px;
-  animation: floatUp 5s linear forwards;
-  pointer-events: none;
-}
-
-@keyframes floatUp {
-  to {
-    transform: translateY(-120dvh) scale(1.4);
-    opacity: 0;
+    transform: translateY(0) scale(1);
   }
 }
